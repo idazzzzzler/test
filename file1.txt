@@ -2,4 +2,5 @@ data:
 	{
 		"user":"Andrey"
 		"email":"idazzzzzler@gmail.com"
+		"sername":"Skosyrkiy"
 	}
