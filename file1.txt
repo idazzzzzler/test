@@ -3,4 +3,5 @@ data:
 		"user":"Andrey"
 		"email":"idazzzzzler@gmail.com"
 		"surname":"Skosyrkiy"
+		"city":"Rostov-on-Don"
 	}
