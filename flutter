@@ -1,0 +1,144 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+
+void main() {
+  runApp(MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Title')),
+          body: Center(
+            child: Container(
+              alignment: Alignment.bottomCenter,
+              decoration: const BoxDecoration(
+                // border: Border(
+                //   bottom: BorderSide(width: 1, color: Colors.blue),
+                //   left: BorderSide(width: 1, color: Colors.blue),
+                //   right: BorderSide(width: 1, color: Colors.blue),
+                //   top: BorderSide(width: 1, color: Colors.blue)
+                // ),
+              ),
+              constraints: const BoxConstraints(
+                maxHeight: 600.0,
+                maxWidth: 800.0,
+                minHeight: 300.0,
+                minWidth: 300.0
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget> [
+                  const TopBar(),
+                  TextFo(label: 'Name'),
+                  TextFo(label: 'Sername'),
+                  TextFo(label: 'Patronomic'),
+                  const SendBut(),
+                  // const ButTab()
+              ],
+            ),
+          )
+        )
+      )
+    )
+  );
+}
+
+class ButTab extends StatelessWidget {
+  const ButTab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return 
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Column(
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () => print('phone'), 
+                  child: const Icon(Icons.phone,
+                  color: Colors.black)),
+                const Text('Call')
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed:() =>  print('location'),
+                  child: const Icon(Icons.location_pin,
+                  color: Colors.black,)),
+                const Text('Route')
+              ],
+            ),
+            Column(
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () => print('share'),
+                  child: const Icon(Icons.share,
+                  color: Colors.black,)),
+                const Text('Share')
+              ],
+            )
+          ],
+        );
+    }
+}
+
+class TopBar extends StatelessWidget {
+  const TopBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children:[
+        Expanded(
+          child: Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpTgD95vFc_qGupz0ZseZ_AK693N4jsvQkZg&usqp=CAU',
+          width: 300,
+          height: 300)),
+        Expanded(
+          flex: 2,
+          child: Image.network('https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Circle-icons-image.svg/800px-Circle-icons-image.svg.png',
+          width: 300,
+          height: 300)),
+        Expanded(
+          child: Image.network('https://ik.imagekit.io/ikmedia/backlit.jpg',
+          width: 300,
+          height: 300))
+      ]
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class TextFo extends StatelessWidget{
+  String? hint;
+  String? label;
+  TextFo({super.key, this.hint, this.label});
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      style: const TextStyle(fontSize: 16),
+      decoration:  InputDecoration(
+        hintText: hint,
+        labelText: label,
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(30.0)),
+        ),
+      ),
+    );
+  }
+}
+
+class SendBut extends StatelessWidget{
+  const SendBut({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () => print('Sending data'),
+      child: const Text('Отправить')
+    );
+  }
+}
